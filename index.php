@@ -45,32 +45,7 @@
     <center>
    
     </center>
-    <div class=" w3l-login-form">
-        <h2>Login </h2>
-    <form action="login.php" method="post">
-
-            <div class=" w3l-form-group">
-                <label>Usuario:</label>
-                <div class="group">
-                    <i class="fas fa-user"></i>
-                    <input type="text" class="form-control" placeholder="Usuario"  name="username" value="admin" required="required" />
-                </div>
-            </div>
-            <div class=" w3l-form-group">
-                <label>Password:</label>
-                <div class="group">
-                    <i class="fas fa-unlock"></i>
-                    <input type="password" class="form-control" placeholder="Password" name="password" value="admin" required="required" />
-                </div>
-            </div>
-            <div class="forgot">
-                <a href="rhttps://comprayventacodigofuente.com/all-items"  >Catalogo de sisemas aqui</a>
-                <p><input type="checkbox">Recordar password</p>
-            </div>
-            <button type="submit" name="login">Login</button>
-        </form>
-        <p class=" w3l-register-p">Cotiza tu desarrollo web por chat aqui?<a href="https://ventas.programacionparacompartir.com/" class="register" target="_blank">  aqui</a></p>
-    </div>
+  
     <footer>
 
     </footer>
