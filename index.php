@@ -1,68 +1,167 @@
+<?php
+$id_usuario=$_SERVER['REMOTE_ADDR'];
+?>
+<?php include 'header.php';
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-        <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <title>API <?php include('dist/includes/title.php');?></title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+//$branch_id = $_GET['id'];
+?>
+  
+<script src="../dist/js/demo.js?v=<?php echo(rand()); ?>"></script>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+  
+
+        
+
+
+        <?php
+        if(isset($_POST['btn_temporada']))
+        {
+            $year = $_POST['year'];
+            mysqli_query($con,"update temporada set year='$year' where id='1'")or die(mysqli_error());
+        }
+        ?>
+        <!-- contenido -->
+         <div class="right_col" role="main">
+   <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class = "x-panel">
+          </div>
+      </div>
+  </div>
+<?php
+  $id_usuario=$_SERVER['REMOTE_ADDR'];
+   $fecha = date('Y-m-d');
+?>
+<!--caja de ingreso-->
+
+<?php
+                
+?>
+
+<!--modulo egresar-->
+
+
+     <?php
+       ?>
+
+<br>
+
+
+<br>
+<!--opcional la busqueda en verdad, no es requisito-->
+
+
+<div class="box-header " >
+  <h3 class="box-title"> Flujo de datos</h3>
+</div>
+                
+<div class="box-body ">
+  <table style="width: 70vw;" id="example2" class="table table-bordered table-striped">
+    <thead>
+    <tr class=" btn-success">
+      <th> fecha </th>
+      <th> descripcion </th>
+     
+    </tr>
+    </thead>
+<tbody>
+<?php
+  $query=mysqli_query($db,"select * from visitor_logs ")or die(mysqli_error());
+  $i=1;
+  while($row=mysqli_fetch_array($query)){
+ 
+
+  $id_libro=$row['user_ip_address'];
+  $debe_haber=$row['created'];
     
-    <!-- Font Awesome -->
-    <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+      ?>
   
-    <!-- meta tags -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="keywords" content="sistema de parqueamiento, parqueo,codigo fuente parqueo, sistema de parqueamiento con codigo fuente"
-    />
-    <!-- /meta tags -->
-    <!-- custom style sheet -->
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <!-- /custom style sheet -->
-    <!-- fontawesome css -->
-    <link href="css/fontawesome-all.css" rel="stylesheet" />
-    <!-- /fontawesome css -->
-    <!-- google fonts-->
-    <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-    <!-- /google fonts-->
+   <tr >
+  <td><?php echo $row['created'];?></td>
+  <td><?php echo $row['user_ip_address'];?></td>
+ 
+    
+ 
+    <td class="btn-print">
+      <?php
+          ?>
+          <!--eliminardaatos-->
+   <a class="small-box-footer btn-print"  href="<?php  echo "delete.php?monto=$monto&id_libro=$id_libro&debe_haber=$debe_haber&id_usuario=$id_usuario";?>" onClick="return confirm('¿Está seguro de que quieres eliminar transaccion??');"><i class="glyphicon glyphicon-remove"></i></a>
+   <?php
+      ?>
+   <?php
+                 
+       ?>
 
-</head>
-  <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-</head>
+      </td>
+        </tr>
+        
+<?php $i++;}?>
+      </tbody>
+      </table>
+  <script type="text/javascript">
+    function Eliminar (i) {
+    document.getElementsByTagName("table")[0].setAttribute("id","tableid");
+    document.getElementById("tableid").deleteRow(i);
+}
+    function Buscar() {
+            var tabla = document.getElementById('example2');
+            var busqueda = document.getElementById('txtBusqueda').value.toLowerCase();
+            var cellsOfRow="";
+            var found=false;
+            var compareWith="";
+            for (var i = 1; i < tabla.rows.length; i++) {
+                cellsOfRow = tabla.rows[i].getElementsByTagName('td');
+                found = false;
+                for (var j = 0; j < cellsOfRow.length && !found; j++) { compareWith = cellsOfRow[j].innerHTML.toLowerCase(); if (busqueda.length == 0 || (compareWith.indexOf(busqueda) > -1))
+                    {
+                        found = true;
+                    }
+                }
+                if(found)
+                {
+                    tabla.rows[i].style.display = '';
+                } else {
+                    tabla.rows[i].style.display = 'none';
+                }
+            }
+        }
+</script>
+    </div>
+  </div>
+ </div>
+</div>
 
-<body>
-    <center>
-   
-    </center>
-  
-    <footer>
-
-    </footer>
+</div>
+</div>
+</div>
+</div>
 
 
+     <script>
+      $(document).ready( function() {
+      $('#example2').dataTable( {
+      "language": {
+       "paginate": {
+        "previous": "anterior",
+        "next": "posterior"},
+        "search": "Buscar:", },
+        "info": false,
+        "lengthChange": false,
+         "searching": false,
 
-    <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <!-- SlimScroll -->
-    <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="plugins/fastclick/fastclick.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="dist/js/app.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js"></script>
+
+          }
+          );
+          } );
+       </script>
+
+    <?php 
+      
+?>
 </body>
-
 </html>
