@@ -2,7 +2,7 @@
 $dbuser = 'root';
 $dbpass = '';
 $dbname = 'bdprueba';
-$con = mysqli_connect("localhost",$dbuser,$dbpass,$dbname);
+$db = mysqli_connect("localhost",$dbuser,$dbpass,$dbname);
 
 // Check connection
 if (mysqli_connect_errno())
